@@ -5,7 +5,7 @@ import affair from "./affairs/affair/Affair";
 
 /*
 * 1 - описать типы AffairPriorityType, AffairType +
-* 2 - указать нужный тип для defaultAffairs
+* 2 - указать нужный тип для defaultAffairs +
 * 3 - дописать типы и логику функции filterAffairs и проверить её тестами
 * 4 - выполнить пункт 3 для функции deleteAffair
 * 5 - указать нужный тип в useState с affairs
@@ -38,14 +38,12 @@ const defaultAffairs: Array<AffairType> = [ // need to fix any
 ]
 
 // pure helper functions
-export const filterAffairs = (affairs: any, filter: any): any => {
-    setFilter(affairs.filter((affair:AffairType) => affair.priority != filter.priority))
-
-    return affairs // need to fix
+export const filterAffairs = (affairs: Array<AffairType>, filter: FilterType): Array<AffairType> => {
+    return filter !== 'all' ? affairs.filter((af) => af.priority == filter): affairs// need to fix
 }
-export const deleteAffair = (affairs: any, _id: any): any => { // need to fix any
+export const deleteAffair = (affairs: Array<AffairType>, _id: number): Array<AffairType> => { // need to fix any
 
-    return affairs // need to fix
+    return affairs.filter((affair)=>affair._id !== _id) // need to fix
 }
 
 function HW2() {
@@ -54,7 +52,7 @@ function HW2() {
 
     const filteredAffairs = filterAffairs(affairs, filter)
     const deleteAffairCallback = (_id: any) => { // need to fix any
-        // need to fix
+       setAffairs(deleteAffair(affairs,_id)) // need to fix
     }
 
     return (
