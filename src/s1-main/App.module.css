@@ -7,7 +7,7 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    padding: 200px;
+    padding-bottom: 200px;
     border-bottom: 1px solid #d3d3d3;
     border-top: 1px solid #d3d3d3;
 }
@@ -21,10 +21,10 @@
 
 .hw1 {
     width: 100%;
-    /*margin:0vh auto;*/
+    margin:0 auto;
 }
-/*.Board{*/
-/*    position: relative;*/
-/*    width: 1280px;*/
-/*    height: 720px;*/
-/*}*/
+.Board{
+    position: relative;
+    width: 1280px;
+    height: 720px;
+}
