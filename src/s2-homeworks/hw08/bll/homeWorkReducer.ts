@@ -7,13 +7,12 @@ type ActionType =
 export const homeWorkReducer = (state: UserType[], action: ActionType): any => { // need to fix any
     switch (action.type) {
         case 'sort': { // by name
-            if (action.payload == 'up'){
-                state.sort((a, b) => a.name.localeCompare(b.name))
-            }else
-            {
-                state.sort((a, b) => b.name.localeCompare(a.name))
-            }
-            return state// need to fix
+
+            return [ ...state ].sort(
+                (a, b) => a.name > b.name ?
+                    action.payload === 'up' ? 1 : -1 :
+                    action.payload === 'up' ? -1 : 1
+            )
         }
         case 'check': {
 
@@ -24,11 +23,4 @@ export const homeWorkReducer = (state: UserType[], action: ActionType): any => {
     }
 }
 
-// export type todolistReducerType=removeTodoListACType
-// export type removeTodoListACType=ReturnType<typeof removeTodolistAC>
-// export const removeTodolistAC =(id:string)=>{
-//     return{
-//         type: 'REMOVE-TODOLIST',
-//         payload:{id}
-//     }as const
-// }
+
